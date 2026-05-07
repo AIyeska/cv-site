@@ -41,7 +41,7 @@ const education = [
     period: "2020 — 2023",
     title: "Markedsføring og salgsledelse",
     company: "Høyskolen Kristiania",
-    desc: "Faglig fundament innen markedsføring, salgsstrategi og forretningsmessig kommunikasjon.",
+    desc: "Forretningsforståelse, salgsstrategi og kommunikasjon — et fundament som viste seg mer verdifullt enn forventet da det kombineres med teknologi og AI.",
     tags: ["Markedsføring", "Salgsledelse", "Strategi"],
   },
   {
@@ -54,10 +54,16 @@ const education = [
 ];
 
 const values = [
-  "Gjør det komplekse forståelig",
-  "Skaper struktur der det mangler",
-  "Leverer verdi, ikke bare rapport",
-  "Integrerer AI i alt jeg gjør",
+  "Teknologi og kreativitet",
+  "Strategi og problemløsning",
+  "Struktur og innovasjon",
+  "Brukerforståelse og forretningsverdi",
+];
+
+const intersections = [
+  { left: "Mennesker", right: "Teknologi" },
+  { left: "Business", right: "Innovasjon" },
+  { left: "Struktur", right: "Kreativitet" },
 ];
 
 export default function Home() {
@@ -113,9 +119,9 @@ export default function Home() {
                 className="text-lg md:text-xl leading-relaxed mb-4 max-w-2xl"
                 style={{ color: "var(--color-secondary)" }}
               >
-                Jeg er Customer Success Manager som forenkler komplekse IT-miljøer,
-                driver adopsjon av Microsoft Cloud — og bruker AI til å jobbe smartere
-                hver eneste dag.
+                Customer Success Manager hos Crayon. Jeg forenkler komplekse IT-miljøer,
+                driver adopsjon av Microsoft Cloud — og bygger AI-løsninger som faktisk
+                løser ekte problemer.
               </p>
             </AnimatedSection>
 
@@ -124,9 +130,9 @@ export default function Home() {
                 className="text-base leading-relaxed mb-10 max-w-xl"
                 style={{ color: "var(--color-secondary)" }}
               >
-                Jeg tror på at teknologi skal skape frihet, ikke friksjon. Gjennom
-                strukturert tenkning og AI-drevne arbeidsmetoder hjelper jeg
-                organisasjoner å realisere det de faktisk betalte for.
+                Jeg er ikke kommet hit via den korteste veien — og det er nøyaktig
+                derfor jeg er god på det jeg gjør. Bredde, nysgjerrighet og evnen
+                til å se helheten har blitt mitt sterkeste konkurransefortrinn.
               </p>
             </AnimatedSection>
 
@@ -175,113 +181,234 @@ export default function Home() {
       {/* ── OM MEG ── */}
       <section id="om-meg" className="py-28" style={{ backgroundColor: "var(--color-surface)" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedSection>
-                <span
-                  className="text-xs font-semibold uppercase tracking-widest mb-3 block"
-                  style={{ color: "var(--color-accent-dark)" }}
-                >
-                  Om meg
-                </span>
-                <h2
-                  className="text-4xl md:text-5xl font-semibold mb-6"
-                  style={{ color: "var(--color-foreground)" }}
-                >
-                  Jeg skaper orden
-                  <br />
-                  <span style={{ color: "var(--color-accent-dark)" }}>i kompleksiteten.</span>
-                </h2>
-              </AnimatedSection>
 
-              <AnimatedSection delay={80}>
-                <p className="text-base leading-relaxed mb-5" style={{ color: "var(--color-secondary)" }}>
-                  Som Customer Success Manager hos Crayon er jeg bindeleddet mellom
-                  teknologi og forretningsverdi. Jeg hjelper kundene å forstå hva de
-                  har kjøpt — og faktisk ta det i bruk på en måte som gir effekt.
+          {/* Header */}
+          <AnimatedSection>
+            <span
+              className="text-xs font-semibold uppercase tracking-widest mb-3 block"
+              style={{ color: "var(--color-accent-dark)" }}
+            >
+              Om meg
+            </span>
+            <h2
+              className="text-4xl md:text-5xl font-semibold mb-16 max-w-2xl"
+              style={{ color: "var(--color-foreground)" }}
+            >
+              Ikke en tradisjonell vei —{" "}
+              <span style={{ color: "var(--color-accent-dark)" }}>men den rette.</span>
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Story */}
+            <div className="flex flex-col gap-6">
+              <AnimatedSection delay={60}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  Jeg har ikke hatt en helt tradisjonell vei inn i teknologi. Tidlig i karrieren
+                  startet jeg på et studie jeg oppriktig trodde skulle bli riktig for meg. Like
+                  før jeg var ferdig, innså jeg at bransjen var i stor endring — jeg studerte
+                  tradisjonell markedsføring, men nettopp da kom SoMe og digital markedsføring
+                  for fullt. Kompetansen jeg bygde, møtte ikke det markedet skrek etter.
                 </p>
               </AnimatedSection>
 
-              <AnimatedSection delay={140}>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--color-secondary)" }}>
-                  Med bakgrunn fra markedsføring og salgsledelse fra Høyskolen Kristiania
-                  kombinerer jeg forretningsforståelse med teknisk innsikt. I tillegg
-                  bruker jeg AI som et daglig verktøy — ikke bare snakker om det,
-                  men <em>bygger</em> med det.
+              <AnimatedSection delay={100}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  I stedet for å låse meg fast i noe som ikke føltes riktig, valgte jeg å
+                  utforske ulike roller, bransjer og arbeidsmåter — for å forstå hvor jeg
+                  faktisk kunne skape mest verdi. Det ga meg noe jeg verdsetter høyt i dag:
                 </p>
               </AnimatedSection>
 
-              <AnimatedSection delay={200}>
-                <ul className="flex flex-col gap-3">
+              <AnimatedSection delay={130}>
+                <div
+                  className="px-6 py-5 rounded-2xl"
+                  style={{
+                    backgroundColor: "var(--color-accent-light)",
+                    border: "1px solid var(--color-accent)",
+                  }}
+                >
+                  <p
+                    className="text-xl font-semibold"
+                    style={{ fontFamily: "var(--font-heading)", color: "var(--color-accent-dark)" }}
+                  >
+                    Bredde.
+                  </p>
+                  <p className="text-sm mt-1 leading-relaxed" style={{ color: "var(--color-foreground)" }}>
+                    Sterk forretningsforståelse, teknisk innsikt og evnen til å se
+                    sammenhengen mellom mennesker, prosesser og teknologi.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={160}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  Jeg lærte tidlig at de beste løsningene ikke nødvendigvis er de mest
+                  avanserte — men de som faktisk løser ekte problemer på en enkel og
+                  effektiv måte.
+                </p>
+              </AnimatedSection>
+
+              <AnimatedSection delay={190}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  Da jeg begynte å jobbe med AI, automatisering og moderne verktøy,
+                  falt alt på plass. Det føltes som{" "}
+                  <em style={{ color: "var(--color-foreground)", fontStyle: "italic" }}>full circle</em>.
+                  Plutselig fikk jeg kombinert alle trådene jeg hadde samlet opp:
+                </p>
+              </AnimatedSection>
+
+              <AnimatedSection delay={220}>
+                <ul className="flex flex-col gap-2.5">
                   {values.map((v) => (
                     <li key={v} className="flex items-center gap-3 text-sm font-medium">
-                      <CheckCircle2 size={16} style={{ color: "var(--color-accent-dark)", flexShrink: 0 }} />
+                      <span
+                        className="w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ backgroundColor: "var(--color-accent-dark)" }}
+                      />
                       <span style={{ color: "var(--color-foreground)" }}>{v}</span>
                     </li>
                   ))}
                 </ul>
               </AnimatedSection>
+
+              <AnimatedSection delay={250}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  I dag bygger jeg AI-drevne løsninger og automatiseringer med fokus på
+                  praktisk verdi, effektivisering og brukeropplevelse. Jeg er spesielt
+                  interessert i hvordan AI kan integreres inn i eksisterende arbeidsprosesser
+                  for å redusere manuelt arbeid, skape smartere flyt og frigjøre tid til
+                  det som faktisk betyr noe.
+                </p>
+              </AnimatedSection>
+
+              <AnimatedSection delay={280}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                  Målet mitt er ikke bare å følge utviklingen innen AI — men å være med
+                  å forme hvordan teknologien brukes på en måte som skaper reell verdi
+                  for mennesker og virksomheter.
+                </p>
+              </AnimatedSection>
             </div>
 
-            <AnimatedSection delay={120} className="flex justify-center lg:justify-end">
-              <div
-                className="relative w-full max-w-sm rounded-2xl p-8"
-                style={{
-                  backgroundColor: "var(--color-muted)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
+            {/* Right side: quote card + intersection visual */}
+            <div className="flex flex-col gap-6">
+              <AnimatedSection delay={120}>
                 <div
-                  className="w-3 h-3 rounded-full mb-6"
-                  style={{ backgroundColor: "var(--color-accent)" }}
-                />
-                <blockquote
-                  className="text-lg font-medium leading-snug mb-6"
-                  style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
+                  className="relative w-full rounded-2xl p-8"
+                  style={{
+                    backgroundColor: "var(--color-muted)",
+                    border: "1px solid var(--color-border)",
+                  }}
                 >
-                  &ldquo;Jeg gjør det komplekse enkelt — og hjelper folk å lykkes med
-                  teknologien de allerede har.&rdquo;
-                </blockquote>
-                <div className="flex items-center gap-3">
                   <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold shrink-0"
-                    style={{ backgroundColor: "var(--color-accent)", color: "var(--color-foreground)" }}
+                    className="w-3 h-3 rounded-full mb-6"
+                    style={{ backgroundColor: "var(--color-accent)" }}
+                  />
+                  <blockquote
+                    className="text-lg font-medium leading-snug mb-6"
+                    style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
                   >
-                    MA
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold" style={{ color: "var(--color-foreground)" }}>
-                      Maria Alyeska Cabalan
-                    </p>
-                    <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
-                      Customer Success Manager, Crayon
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="flex gap-6 mt-8 pt-6"
-                  style={{ borderTop: "1px solid var(--color-border)" }}
-                >
-                  {[
-                    { number: "3+", label: "Års erfaring" },
-                    { number: "M365", label: "Spesialist" },
-                    { number: "AI", label: "Daglig bruker" },
-                  ].map((stat) => (
-                    <div key={stat.label}>
-                      <p
-                        className="text-xl font-semibold"
-                        style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
-                      >
-                        {stat.number}
+                    &ldquo;Jeg trives i skjæringspunktet mellom mennesker, business og
+                    teknologi — der komplekse behov må oversettes til løsninger som er
+                    intuitive, skalerbare og nyttige i praksis.&rdquo;
+                  </blockquote>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold shrink-0"
+                      style={{ backgroundColor: "var(--color-accent)", color: "var(--color-foreground)" }}
+                    >
+                      MA
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold" style={{ color: "var(--color-foreground)" }}>
+                        Maria Alyeska Cabalan
                       </p>
                       <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
-                        {stat.label}
+                        Customer Success Manager, Crayon
                       </p>
                     </div>
-                  ))}
+                  </div>
+                  <div
+                    className="flex gap-6 mt-8 pt-6"
+                    style={{ borderTop: "1px solid var(--color-border)" }}
+                  >
+                    {[
+                      { number: "3+", label: "Års erfaring" },
+                      { number: "M365", label: "Spesialist" },
+                      { number: "AI", label: "Daglig bruker" },
+                    ].map((stat) => (
+                      <div key={stat.label}>
+                        <p
+                          className="text-xl font-semibold"
+                          style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
+                        >
+                          {stat.number}
+                        </p>
+                        <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+
+              {/* Skjæringspunkt visual */}
+              <AnimatedSection delay={200}>
+                <div
+                  className="w-full rounded-2xl p-6"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    border: "1px solid var(--color-border)",
+                  }}
+                >
+                  <p
+                    className="text-xs font-semibold uppercase tracking-widest mb-4"
+                    style={{ color: "var(--color-accent-dark)" }}
+                  >
+                    Skjæringspunktet
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    {intersections.map((item) => (
+                      <div key={item.left} className="flex items-center gap-3">
+                        <span
+                          className="text-sm font-medium text-right flex-1"
+                          style={{ color: "var(--color-foreground)" }}
+                        >
+                          {item.left}
+                        </span>
+                        <div
+                          className="w-6 h-px flex-shrink-0"
+                          style={{ backgroundColor: "var(--color-accent)" }}
+                        />
+                        <div
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: "var(--color-accent-dark)" }}
+                        />
+                        <div
+                          className="w-6 h-px flex-shrink-0"
+                          style={{ backgroundColor: "var(--color-accent)" }}
+                        />
+                        <span
+                          className="text-sm font-medium flex-1"
+                          style={{ color: "var(--color-foreground)" }}
+                        >
+                          {item.right}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p
+                    className="text-xs mt-5 leading-relaxed"
+                    style={{ color: "var(--color-secondary)" }}
+                  >
+                    Denne siden er et innblikk i hva jeg bygger, hva jeg lærer,
+                    og hvor jeg er på vei videre.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
