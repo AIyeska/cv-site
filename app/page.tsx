@@ -1,26 +1,30 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import LinkedInIcon from "@/components/LinkedInIcon";
 import Link from "next/link";
-import { ArrowRight, Brain, Layers, TrendingUp, Users, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Brain, Layers, TrendingUp, Users } from "lucide-react";
 
 const skills = [
   {
-    icon: <Brain size={20} />,
+    code: "01",
+    icon: <Brain size={18} strokeWidth={1.4} />,
     title: "AI & Automatisering",
     desc: "Bruker AI aktivt til å effektivisere prosesser og skape konkrete løsninger.",
   },
   {
-    icon: <Layers size={20} />,
+    code: "02",
+    icon: <Layers size={18} strokeWidth={1.4} />,
     title: "Microsoft Cloud",
     desc: "Dyp erfaring med M365, Azure og adopsjon av skyteknologi i komplekse miljøer.",
   },
   {
-    icon: <TrendingUp size={20} />,
+    code: "03",
+    icon: <TrendingUp size={18} strokeWidth={1.4} />,
     title: "Struktur & Strategi",
     desc: "Gjør det kompliserte enkelt. Prioriterer riktig, leverer presist.",
   },
   {
-    icon: <Users size={20} />,
+    code: "04",
+    icon: <Users size={18} strokeWidth={1.4} />,
     title: "Kunderelasjoner",
     desc: "Bygger tillit, driver adopsjon og sørger for at kunder faktisk lykkes.",
   },
@@ -66,68 +70,123 @@ const intersections = [
   { left: "Struktur", right: "Kreativitet" },
 ];
 
+// Mono technical label
+function MonoLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      className="text-[11px] uppercase tracking-[0.18em]"
+      style={{ fontFamily: "var(--font-mono)", color: "var(--color-secondary)" }}
+    >
+      {children}
+    </span>
+  );
+}
+
+// Section index label like "// 01 → ABOUT"
+function SectionIndex({ num, label }: { num: string; label: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-6">
+      <span
+        className="text-[11px] tracking-[0.15em]"
+        style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
+      >
+        // {num}
+      </span>
+      <div
+        className="h-px flex-1 max-w-[60px]"
+        style={{ backgroundColor: "var(--color-foreground)" }}
+      />
+      <span
+        className="text-[11px] uppercase tracking-[0.2em]"
+        style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
       {/* ── HERO ── */}
       <section
-        className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20"
+        className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-32"
         style={{ backgroundColor: "var(--color-background)" }}
       >
+        {/* Tech grid background */}
+        <div className="absolute inset-0 tech-grid pointer-events-none opacity-50" />
+
+        {/* Crosshair lines */}
         <div
-          className="absolute top-1/4 right-0 w-96 h-96 rounded-full opacity-30 blur-3xl pointer-events-none"
-          style={{ backgroundColor: "var(--color-accent-light)" }}
-        />
-        <div
-          className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{ backgroundColor: "var(--color-accent)" }}
+          className="absolute top-0 left-1/2 w-px h-full pointer-events-none opacity-40"
+          style={{ background: "linear-gradient(to bottom, transparent, var(--color-border-strong) 30%, var(--color-border-strong) 70%, transparent)" }}
         />
 
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <div className="max-w-3xl">
-            <AnimatedSection delay={0}>
+        {/* Top status bar */}
+        <div className="absolute top-20 left-0 right-0 px-6 z-20">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-8"
-                style={{
-                  backgroundColor: "var(--color-accent-light)",
-                  color: "var(--color-accent-dark)",
-                }}
+                className="w-1.5 h-1.5 rounded-full tech-pulse"
+                style={{ backgroundColor: "var(--color-foreground)" }}
+              />
+              <span
+                className="text-[10px] tracking-[0.25em]"
+                style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
               >
-                <Sparkles size={12} />
-                Customer Success · Microsoft Cloud · AI
-              </div>
-            </AnimatedSection>
+                ONLINE · CSM · CLOUD · AI
+              </span>
+            </div>
+            <span
+              className="text-[10px] tracking-[0.2em] hidden sm:block"
+              style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+            >
+              N 59.2°  ·  E 10.9°  ·  FREDRIKSTAD
+            </span>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+          <div className="max-w-3xl">
 
             <AnimatedSection delay={80}>
               <h1
-                className="text-5xl md:text-7xl font-semibold mb-6"
+                className="text-5xl md:text-7xl lg:text-8xl font-medium mb-8"
                 style={{
                   fontFamily: "var(--font-heading)",
                   color: "var(--color-foreground)",
-                  lineHeight: "1.05",
-                  letterSpacing: "-0.03em",
+                  lineHeight: "0.95",
+                  letterSpacing: "-0.04em",
                 }}
               >
-                Hei, jeg er{" "}
-                <span style={{ color: "var(--color-accent-dark)" }}>Maria</span>
-                <span style={{ color: "var(--color-accent)" }}>.</span>
+                Maria
+                <br />
+                Alyeska
+                <br />
+                <span style={{ color: "var(--color-tertiary)" }}>Cabalan</span>
               </h1>
             </AnimatedSection>
 
             <AnimatedSection delay={160}>
-              <p
-                className="text-lg md:text-xl leading-relaxed mb-4 max-w-2xl"
-                style={{ color: "var(--color-secondary)" }}
+              <div
+                className="flex items-start gap-4 mb-6 pl-4"
+                style={{ borderLeft: "1px solid var(--color-foreground)" }}
               >
-                Customer Success Manager hos Crayon. Jeg forenkler komplekse IT-miljøer,
-                driver adopsjon av Microsoft Cloud — og bygger AI-løsninger som faktisk
-                løser ekte problemer.
-              </p>
+                <p
+                  className="text-base md:text-lg leading-relaxed max-w-xl"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  Customer Success Manager hos Crayon. Jeg forenkler komplekse IT-miljøer,
+                  driver adopsjon av Microsoft Cloud — og bygger AI-løsninger som faktisk
+                  løser ekte problemer.
+                </p>
+              </div>
             </AnimatedSection>
 
             <AnimatedSection delay={220}>
               <p
-                className="text-base leading-relaxed mb-10 max-w-xl"
+                className="text-sm leading-relaxed mb-12 max-w-lg"
                 style={{ color: "var(--color-secondary)" }}
               >
                 Jeg er ikke kommet hit via den korteste veien — og det er nøyaktig
@@ -140,70 +199,109 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-85"
+                  className="group inline-flex items-center gap-3 px-6 py-3 text-sm font-medium transition-all duration-200"
                   style={{
                     backgroundColor: "var(--color-foreground)",
                     color: "var(--color-background)",
+                    fontFamily: "var(--font-mono)",
+                    letterSpacing: "0.05em",
                   }}
                 >
-                  Se porteføljen min
-                  <ArrowRight size={15} />
+                  <span>SE PORTEFØLJE</span>
+                  <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
                 <a
                   href="https://www.linkedin.com/in/maria-alyeska-cabalan-60b46b231/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-80"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)]"
                   style={{
                     color: "var(--color-foreground)",
-                    border: "1.5px solid var(--color-border)",
+                    border: "1px solid var(--color-foreground)",
+                    fontFamily: "var(--font-mono)",
+                    letterSpacing: "0.05em",
                   }}
                 >
-                  <LinkedInIcon size={15} />
-                  LinkedIn
+                  <LinkedInIcon size={14} />
+                  LINKEDIN
                 </a>
               </div>
             </AnimatedSection>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40">
-          <span className="text-xs" style={{ color: "var(--color-secondary)", fontFamily: "var(--font-body)" }}>
-            Scroll
-          </span>
-          <div
-            className="w-px h-8 rounded-full"
-            style={{ background: "linear-gradient(to bottom, var(--color-accent), transparent)" }}
-          />
+        {/* Bottom bar with index */}
+        <div className="absolute bottom-8 left-0 right-0 px-6">
+          <div className="max-w-6xl mx-auto flex items-end justify-between">
+            <div>
+              <div
+                className="text-[10px] tracking-[0.25em] mb-1"
+                style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+              >
+                INDEX
+              </div>
+              <div className="flex gap-3">
+                {["01", "02", "03", "04"].map((n, i) => (
+                  <div key={n} className="flex items-center gap-1.5">
+                    <span
+                      className="text-[11px]"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        color: i === 0 ? "var(--color-foreground)" : "var(--color-tertiary)",
+                      }}
+                    >
+                      {n}
+                    </span>
+                    {i === 0 && (
+                      <div
+                        className="w-1 h-1 rounded-full"
+                        style={{ backgroundColor: "var(--color-foreground)" }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden md:block text-right">
+              <div
+                className="text-[10px] tracking-[0.25em]"
+                style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+              >
+                SCROLL ↓
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── OM MEG ── */}
-      <section id="om-meg" className="py-28" style={{ backgroundColor: "var(--color-surface)" }}>
+      <section
+        id="om-meg"
+        className="py-32 relative"
+        style={{ backgroundColor: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}
+      >
         <div className="max-w-6xl mx-auto px-6">
+          <SectionIndex num="01" label="ABOUT" />
 
-          {/* Header */}
           <AnimatedSection>
-            <span
-              className="text-xs font-semibold uppercase tracking-widest mb-3 block"
-              style={{ color: "var(--color-accent-dark)" }}
-            >
-              Om meg
-            </span>
             <h2
-              className="text-4xl md:text-5xl font-semibold mb-16 max-w-2xl"
-              style={{ color: "var(--color-foreground)" }}
+              className="text-4xl md:text-6xl font-medium mb-20 max-w-3xl"
+              style={{
+                color: "var(--color-foreground)",
+                lineHeight: "1.0",
+                letterSpacing: "-0.03em",
+              }}
             >
               Ikke en tradisjonell vei —{" "}
-              <span style={{ color: "var(--color-accent-dark)" }}>men den rette.</span>
+              <span style={{ color: "var(--color-tertiary)" }}>men den rette.</span>
             </h2>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Story */}
-            <div className="flex flex-col gap-6">
+            <div className="lg:col-span-7 flex flex-col gap-6">
               <AnimatedSection delay={60}>
-                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-foreground)" }}>
                   Jeg har ikke hatt en helt tradisjonell vei inn i teknologi. Tidlig i karrieren
                   startet jeg på et studie jeg oppriktig trodde skulle bli riktig for meg. Like
                   før jeg var ferdig, innså jeg at bransjen var i stor endring — jeg studerte
@@ -216,25 +314,41 @@ export default function Home() {
                 <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
                   I stedet for å låse meg fast i noe som ikke føltes riktig, valgte jeg å
                   utforske ulike roller, bransjer og arbeidsmåter — for å forstå hvor jeg
-                  faktisk kunne skape mest verdi. Det ga meg noe jeg verdsetter høyt i dag:
+                  faktisk kunne skape mest verdi.
                 </p>
               </AnimatedSection>
 
               <AnimatedSection delay={130}>
                 <div
-                  className="px-6 py-5 rounded-2xl"
+                  className="p-6 my-2"
                   style={{
-                    backgroundColor: "var(--color-accent-light)",
-                    border: "1px solid var(--color-accent)",
+                    border: "1px solid var(--color-foreground)",
+                    backgroundColor: "var(--color-background)",
                   }}
                 >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className="text-[10px] tracking-[0.25em]"
+                      style={{ fontFamily: "var(--font-mono)", color: "var(--color-secondary)" }}
+                    >
+                      OUTPUT_001
+                    </span>
+                    <div
+                      className="h-px flex-1"
+                      style={{ backgroundColor: "var(--color-border)" }}
+                    />
+                  </div>
                   <p
-                    className="text-xl font-semibold"
-                    style={{ fontFamily: "var(--font-heading)", color: "var(--color-accent-dark)" }}
+                    className="text-3xl md:text-4xl font-medium mb-2"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      color: "var(--color-foreground)",
+                      letterSpacing: "-0.02em",
+                    }}
                   >
                     Bredde.
                   </p>
-                  <p className="text-sm mt-1 leading-relaxed" style={{ color: "var(--color-foreground)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-secondary)" }}>
                     Sterk forretningsforståelse, teknisk innsikt og evnen til å se
                     sammenhengen mellom mennesker, prosesser og teknologi.
                   </p>
@@ -250,23 +364,45 @@ export default function Home() {
               </AnimatedSection>
 
               <AnimatedSection delay={190}>
-                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-foreground)" }}>
                   Da jeg begynte å jobbe med AI, automatisering og moderne verktøy,
                   falt alt på plass. Det føltes som{" "}
-                  <em style={{ color: "var(--color-foreground)", fontStyle: "italic" }}>full circle</em>.
-                  Plutselig fikk jeg kombinert alle trådene jeg hadde samlet opp:
+                  <span
+                    className="px-1.5 py-0.5 text-sm"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      backgroundColor: "var(--color-foreground)",
+                      color: "var(--color-background)",
+                    }}
+                  >
+                    full circle
+                  </span>
+                  . Plutselig fikk jeg kombinert alle trådene jeg hadde samlet opp:
                 </p>
               </AnimatedSection>
 
               <AnimatedSection delay={220}>
-                <ul className="flex flex-col gap-2.5">
-                  {values.map((v) => (
-                    <li key={v} className="flex items-center gap-3 text-sm font-medium">
+                <ul className="flex flex-col gap-2 my-2">
+                  {values.map((v, i) => (
+                    <li key={v} className="flex items-center gap-4 py-2.5" style={{ borderBottom: "1px solid var(--color-border)" }}>
                       <span
-                        className="w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ backgroundColor: "var(--color-accent-dark)" }}
-                      />
-                      <span style={{ color: "var(--color-foreground)" }}>{v}</span>
+                        className="text-[10px] tracking-[0.15em] w-8"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span
+                        className="text-sm font-medium flex-1"
+                        style={{ color: "var(--color-foreground)" }}
+                      >
+                        {v}
+                      </span>
+                      <span
+                        className="text-[10px]"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+                      >
+                        ✓
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -283,7 +419,7 @@ export default function Home() {
               </AnimatedSection>
 
               <AnimatedSection delay={280}>
-                <p className="text-base leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--color-foreground)" }}>
                   Målet mitt er ikke bare å følge utviklingen innen AI — men å være med
                   å forme hvordan teknologien brukes på en måte som skaper reell verdi
                   for mennesker og virksomheter.
@@ -291,61 +427,91 @@ export default function Home() {
               </AnimatedSection>
             </div>
 
-            {/* Right side: quote card + intersection visual */}
-            <div className="flex flex-col gap-6">
+            {/* Right side */}
+            <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-24">
               <AnimatedSection delay={120}>
                 <div
-                  className="relative w-full rounded-2xl p-8"
+                  className="relative w-full p-7"
                   style={{
-                    backgroundColor: "var(--color-muted)",
-                    border: "1px solid var(--color-border)",
+                    backgroundColor: "var(--color-foreground)",
+                    color: "var(--color-background)",
                   }}
                 >
-                  <div
-                    className="w-3 h-3 rounded-full mb-6"
-                    style={{ backgroundColor: "var(--color-accent)" }}
-                  />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-1.5 h-1.5 rounded-full tech-pulse"
+                        style={{ backgroundColor: "var(--color-background)" }}
+                      />
+                      <span
+                        className="text-[10px] tracking-[0.25em]"
+                        style={{ fontFamily: "var(--font-mono)", opacity: 0.7 }}
+                      >
+                        STATEMENT.LOG
+                      </span>
+                    </div>
+                    <span
+                      className="text-[10px]"
+                      style={{ fontFamily: "var(--font-mono)", opacity: 0.5 }}
+                    >
+                      v1.0
+                    </span>
+                  </div>
+
                   <blockquote
-                    className="text-lg font-medium leading-snug mb-6"
-                    style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
+                    className="text-lg leading-snug mb-6"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      letterSpacing: "-0.01em",
+                    }}
                   >
                     &ldquo;Jeg trives i skjæringspunktet mellom mennesker, business og
                     teknologi — der komplekse behov må oversettes til løsninger som er
                     intuitive, skalerbare og nyttige i praksis.&rdquo;
                   </blockquote>
-                  <div className="flex items-center gap-3">
+
+                  <div className="flex items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
                     <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold shrink-0"
-                      style={{ backgroundColor: "var(--color-accent)", color: "var(--color-foreground)" }}
+                      className="w-9 h-9 flex items-center justify-center text-xs font-medium shrink-0"
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.3)",
+                        fontFamily: "var(--font-mono)",
+                      }}
                     >
                       MA
                     </div>
                     <div>
-                      <p className="text-sm font-semibold" style={{ color: "var(--color-foreground)" }}>
-                        Maria Alyeska Cabalan
+                      <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)" }}>
+                        MARIA ALYESKA CABALAN
                       </p>
-                      <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
-                        Customer Success Manager, Crayon
+                      <p className="text-[10px] tracking-[0.15em]" style={{ fontFamily: "var(--font-mono)", opacity: 0.6 }}>
+                        CSM · CRAYON
                       </p>
                     </div>
                   </div>
-                  <div
-                    className="flex gap-6 mt-8 pt-6"
-                    style={{ borderTop: "1px solid var(--color-border)" }}
-                  >
+
+                  {/* Stats grid */}
+                  <div className="grid grid-cols-3 gap-px mt-6" style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>
                     {[
-                      { number: "3+", label: "Års erfaring" },
-                      { number: "M365", label: "Spesialist" },
-                      { number: "AI", label: "Daglig bruker" },
+                      { number: "3+", label: "ÅRS_ERFARING" },
+                      { number: "M365", label: "SPESIALIST" },
+                      { number: "AI", label: "DAGLIG_BRUK" },
                     ].map((stat) => (
-                      <div key={stat.label}>
+                      <div
+                        key={stat.label}
+                        className="p-3"
+                        style={{ backgroundColor: "var(--color-foreground)" }}
+                      >
                         <p
-                          className="text-xl font-semibold"
-                          style={{ fontFamily: "var(--font-heading)", color: "var(--color-foreground)" }}
+                          className="text-2xl font-medium mb-1"
+                          style={{ fontFamily: "var(--font-heading)" }}
                         >
                           {stat.number}
                         </p>
-                        <p className="text-xs" style={{ color: "var(--color-secondary)" }}>
+                        <p
+                          className="text-[9px] tracking-[0.15em]"
+                          style={{ fontFamily: "var(--font-mono)", opacity: 0.6 }}
+                        >
                           {stat.label}
                         </p>
                       </div>
@@ -357,55 +523,73 @@ export default function Home() {
               {/* Skjæringspunkt visual */}
               <AnimatedSection delay={200}>
                 <div
-                  className="w-full rounded-2xl p-6"
+                  className="w-full p-6"
                   style={{
                     backgroundColor: "var(--color-surface)",
-                    border: "1px solid var(--color-border)",
+                    border: "1px solid var(--color-foreground)",
                   }}
                 >
-                  <p
-                    className="text-xs font-semibold uppercase tracking-widest mb-4"
-                    style={{ color: "var(--color-accent-dark)" }}
-                  >
-                    Skjæringspunktet
-                  </p>
+                  <div className="flex items-center justify-between mb-5">
+                    <span
+                      className="text-[10px] tracking-[0.25em]"
+                      style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
+                    >
+                      INTERSECTIONS
+                    </span>
+                    <span
+                      className="text-[10px]"
+                      style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+                    >
+                      [03]
+                    </span>
+                  </div>
                   <div className="flex flex-col gap-3">
                     {intersections.map((item) => (
                       <div key={item.left} className="flex items-center gap-3">
                         <span
-                          className="text-sm font-medium text-right flex-1"
-                          style={{ color: "var(--color-foreground)" }}
+                          className="text-xs font-medium text-right flex-1"
+                          style={{ color: "var(--color-foreground)", fontFamily: "var(--font-mono)" }}
                         >
-                          {item.left}
+                          {item.left.toUpperCase()}
                         </span>
-                        <div
-                          className="w-6 h-px flex-shrink-0"
-                          style={{ backgroundColor: "var(--color-accent)" }}
-                        />
-                        <div
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: "var(--color-accent-dark)" }}
-                        />
-                        <div
-                          className="w-6 h-px flex-shrink-0"
-                          style={{ backgroundColor: "var(--color-accent)" }}
-                        />
+                        <div className="flex items-center gap-1 shrink-0">
+                          <div
+                            className="w-3 h-px"
+                            style={{ backgroundColor: "var(--color-foreground)" }}
+                          />
+                          <div
+                            className="w-1.5 h-1.5"
+                            style={{
+                              backgroundColor: "var(--color-foreground)",
+                              transform: "rotate(45deg)",
+                            }}
+                          />
+                          <div
+                            className="w-3 h-px"
+                            style={{ backgroundColor: "var(--color-foreground)" }}
+                          />
+                        </div>
                         <span
-                          className="text-sm font-medium flex-1"
-                          style={{ color: "var(--color-foreground)" }}
+                          className="text-xs font-medium flex-1"
+                          style={{ color: "var(--color-foreground)", fontFamily: "var(--font-mono)" }}
                         >
-                          {item.right}
+                          {item.right.toUpperCase()}
                         </span>
                       </div>
                     ))}
                   </div>
-                  <p
-                    className="text-xs mt-5 leading-relaxed"
-                    style={{ color: "var(--color-secondary)" }}
+                  <div
+                    className="mt-5 pt-4"
+                    style={{ borderTop: "1px solid var(--color-border)" }}
                   >
-                    Denne siden er et innblikk i hva jeg bygger, hva jeg lærer,
-                    og hvor jeg er på vei videre.
-                  </p>
+                    <p
+                      className="text-xs leading-relaxed"
+                      style={{ color: "var(--color-secondary)" }}
+                    >
+                      Denne siden er et innblikk i hva jeg bygger, hva jeg lærer,
+                      og hvor jeg er på vei videre.
+                    </p>
+                  </div>
                 </div>
               </AnimatedSection>
             </div>
@@ -414,45 +598,55 @@ export default function Home() {
       </section>
 
       {/* ── KOMPETANSE ── */}
-      <section className="py-28" style={{ backgroundColor: "var(--color-background)" }}>
+      <section
+        className="py-32"
+        style={{ backgroundColor: "var(--color-background)", borderTop: "1px solid var(--color-border)" }}
+      >
         <div className="max-w-6xl mx-auto px-6">
+          <SectionIndex num="02" label="CAPABILITIES" />
+
           <AnimatedSection>
-            <span
-              className="text-xs font-semibold uppercase tracking-widest mb-3 block"
-              style={{ color: "var(--color-accent-dark)" }}
-            >
-              Kompetanse
-            </span>
             <h2
-              className="text-4xl md:text-5xl font-semibold mb-14"
-              style={{ color: "var(--color-foreground)" }}
+              className="text-4xl md:text-6xl font-medium mb-16 max-w-2xl"
+              style={{
+                color: "var(--color-foreground)",
+                lineHeight: "1.0",
+                letterSpacing: "-0.03em",
+              }}
             >
-              Hva jeg bringer
-              <br />
-              <span style={{ color: "var(--color-accent-dark)" }}>til bordet.</span>
+              Hva jeg bringer{" "}
+              <span style={{ color: "var(--color-tertiary)" }}>til bordet.</span>
             </h2>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((skill, i) => (
               <AnimatedSection key={skill.title} delay={i * 80}>
                 <div
-                  className="p-6 rounded-2xl h-full transition-all duration-300 hover:-translate-y-1 cursor-default"
+                  className="p-7 h-full transition-all duration-300 hover:bg-[var(--color-surface)] cursor-default group"
                   style={{
-                    backgroundColor: "var(--color-surface)",
-                    border: "1px solid var(--color-border)",
+                    borderTop: "1px solid var(--color-foreground)",
+                    borderRight: i < skills.length - 1 ? "1px solid var(--color-border)" : "none",
                   }}
                 >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                    style={{
-                      backgroundColor: "var(--color-accent-light)",
-                      color: "var(--color-accent-dark)",
-                    }}
-                  >
-                    {skill.icon}
+                  <div className="flex items-center justify-between mb-8">
+                    <span
+                      className="text-[10px] tracking-[0.25em]"
+                      style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+                    >
+                      // {skill.code}
+                    </span>
+                    <div
+                      className="transition-colors duration-200 group-hover:text-[var(--color-foreground)]"
+                      style={{ color: "var(--color-secondary)" }}
+                    >
+                      {skill.icon}
+                    </div>
                   </div>
-                  <h3 className="text-base font-semibold mb-2" style={{ color: "var(--color-foreground)" }}>
+                  <h3
+                    className="text-base font-medium mb-3"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
                     {skill.title}
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--color-secondary)" }}>
@@ -466,55 +660,79 @@ export default function Home() {
       </section>
 
       {/* ── ERFARING & UTDANNING ── */}
-      <section id="erfaring" className="py-28" style={{ backgroundColor: "var(--color-surface)" }}>
+      <section
+        id="erfaring"
+        className="py-32"
+        style={{ backgroundColor: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}
+      >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <SectionIndex num="03" label="TIMELINE" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-16">
             {/* Erfaring */}
             <div>
               <AnimatedSection>
-                <span
-                  className="text-xs font-semibold uppercase tracking-widest mb-3 block"
-                  style={{ color: "var(--color-accent-dark)" }}
-                >
-                  Erfaring
-                </span>
-                <h2 className="text-3xl font-semibold mb-10" style={{ color: "var(--color-foreground)" }}>
-                  Arbeidserfaring
-                </h2>
+                <div className="flex items-baseline gap-3 mb-10">
+                  <h2
+                    className="text-3xl font-medium"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
+                    Arbeidserfaring
+                  </h2>
+                  <MonoLabel>[01]</MonoLabel>
+                </div>
               </AnimatedSection>
               <div className="flex flex-col gap-6">
                 {experience.map((item, i) => (
                   <AnimatedSection key={item.title} delay={i * 80}>
                     <div
-                      className="p-6 rounded-2xl"
-                      style={{ backgroundColor: "var(--color-muted)", border: "1px solid var(--color-border)" }}
+                      className="p-6"
+                      style={{
+                        backgroundColor: "var(--color-background)",
+                        border: "1px solid var(--color-border)",
+                      }}
                     >
-                      <span className="text-xs font-medium mb-3 block" style={{ color: "var(--color-accent-dark)" }}>
-                        {item.period}
-                      </span>
-                      <h3 className="text-base font-semibold" style={{ color: "var(--color-foreground)" }}>
+                      <div className="flex items-center justify-between mb-4">
+                        <span
+                          className="text-[10px] tracking-[0.2em]"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
+                        >
+                          {item.period.toUpperCase()}
+                        </span>
+                        <span
+                          className="text-[10px]"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--color-tertiary)" }}
+                        >
+                          ACTIVE
+                        </span>
+                      </div>
+                      <h3 className="text-base font-medium" style={{ color: "var(--color-foreground)" }}>
                         {item.title}
                       </h3>
-                      <p className="text-sm font-medium mb-3" style={{ color: "var(--color-secondary)" }}>
-                        {item.company}
+                      <p
+                        className="text-xs mb-4 mt-1"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--color-secondary)" }}
+                      >
+                        @ {item.company}
                       </p>
                       {item.desc && (
-                        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-secondary)" }}>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--color-secondary)" }}>
                           {item.desc}
                         </p>
                       )}
                       {item.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5">
                           {item.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-xs px-2.5 py-1 rounded-full font-medium"
+                              className="text-[10px] px-2 py-1 tracking-[0.1em]"
                               style={{
-                                backgroundColor: "var(--color-accent-light)",
-                                color: "var(--color-accent-dark)",
+                                fontFamily: "var(--font-mono)",
+                                color: "var(--color-foreground)",
+                                border: "1px solid var(--color-border-strong)",
                               }}
                             >
-                              {tag}
+                              {tag.toUpperCase()}
                             </span>
                           ))}
                         </div>
@@ -528,49 +746,58 @@ export default function Home() {
             {/* Utdanning */}
             <div>
               <AnimatedSection>
-                <span
-                  className="text-xs font-semibold uppercase tracking-widest mb-3 block"
-                  style={{ color: "var(--color-accent-dark)" }}
-                >
-                  Utdanning
-                </span>
-                <h2 className="text-3xl font-semibold mb-10" style={{ color: "var(--color-foreground)" }}>
-                  Akademisk bakgrunn
-                </h2>
+                <div className="flex items-baseline gap-3 mb-10">
+                  <h2 className="text-3xl font-medium" style={{ color: "var(--color-foreground)" }}>
+                    Utdanning
+                  </h2>
+                  <MonoLabel>[02]</MonoLabel>
+                </div>
               </AnimatedSection>
               <div className="flex flex-col gap-6">
                 {education.map((item, i) => (
                   <AnimatedSection key={item.title} delay={i * 80}>
                     <div
-                      className="p-6 rounded-2xl"
-                      style={{ backgroundColor: "var(--color-muted)", border: "1px solid var(--color-border)" }}
+                      className="p-6"
+                      style={{
+                        backgroundColor: "var(--color-background)",
+                        border: "1px solid var(--color-border)",
+                      }}
                     >
-                      <span className="text-xs font-medium mb-3 block" style={{ color: "var(--color-accent-dark)" }}>
-                        {item.period}
-                      </span>
-                      <h3 className="text-base font-semibold" style={{ color: "var(--color-foreground)" }}>
+                      <div className="flex items-center justify-between mb-4">
+                        <span
+                          className="text-[10px] tracking-[0.2em]"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--color-foreground)" }}
+                        >
+                          {item.period.toUpperCase()}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-medium" style={{ color: "var(--color-foreground)" }}>
                         {item.title}
                       </h3>
-                      <p className="text-sm font-medium mb-3" style={{ color: "var(--color-secondary)" }}>
-                        {item.company}
+                      <p
+                        className="text-xs mb-4 mt-1"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--color-secondary)" }}
+                      >
+                        @ {item.company}
                       </p>
                       {item.desc && (
-                        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-secondary)" }}>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--color-secondary)" }}>
                           {item.desc}
                         </p>
                       )}
                       {item.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5">
                           {item.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-xs px-2.5 py-1 rounded-full font-medium"
+                              className="text-[10px] px-2 py-1 tracking-[0.1em]"
                               style={{
-                                backgroundColor: "var(--color-accent-light)",
-                                color: "var(--color-accent-dark)",
+                                fontFamily: "var(--font-mono)",
+                                color: "var(--color-foreground)",
+                                border: "1px solid var(--color-border-strong)",
                               }}
                             >
-                              {tag}
+                              {tag.toUpperCase()}
                             </span>
                           ))}
                         </div>
@@ -585,68 +812,79 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24" style={{ backgroundColor: "var(--color-background)" }}>
-        <div className="max-w-6xl mx-auto px-6">
+      <section
+        className="py-32 relative overflow-hidden"
+        style={{ backgroundColor: "var(--color-foreground)" }}
+      >
+        <div className="absolute inset-0 tech-grid pointer-events-none opacity-[0.05]" />
+
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <AnimatedSection>
-            <div
-              className="rounded-3xl p-12 md:p-16 text-center relative overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-muted) 60%, var(--color-surface) 100%)",
-                border: "1px solid var(--color-accent-light)",
-              }}
-            >
+            <div className="flex items-center gap-3 mb-8">
               <div
-                className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-30 blur-3xl pointer-events-none"
-                style={{
-                  backgroundColor: "var(--color-accent)",
-                  transform: "translate(33%, -50%)",
-                }}
+                className="w-1.5 h-1.5 rounded-full tech-pulse"
+                style={{ backgroundColor: "var(--color-background)" }}
               />
               <span
-                className="text-xs font-semibold uppercase tracking-widest mb-4 block relative z-10"
-                style={{ color: "var(--color-accent-dark)" }}
+                className="text-[11px] tracking-[0.25em]"
+                style={{ fontFamily: "var(--font-mono)", color: "var(--color-background)" }}
               >
-                La oss snakke
+                READY · TO · CONNECT
               </span>
-              <h2
-                className="text-3xl md:text-5xl font-semibold mb-5 relative z-10"
-                style={{ color: "var(--color-foreground)" }}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={80}>
+            <h2
+              className="text-4xl md:text-6xl font-medium mb-8 max-w-3xl"
+              style={{
+                color: "var(--color-background)",
+                lineHeight: "1.0",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              Klar for å skape{" "}
+              <span style={{ opacity: 0.5 }}>noe nytt sammen?</span>
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={140}>
+            <p
+              className="text-base mb-12 max-w-xl"
+              style={{ color: "var(--color-background)", opacity: 0.7 }}
+            >
+              Enten du er nysgjerrig på AI, trenger en skarpere Customer Success-strategi
+              eller ønsker å koble på noen som tenker nytt — ta gjerne kontakt.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={200}>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="mailto:mariacabalan@outlook.com"
+                className="group inline-flex items-center gap-3 px-6 py-3 text-sm transition-all duration-200 hover:opacity-80"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  color: "var(--color-foreground)",
+                  fontFamily: "var(--font-mono)",
+                  letterSpacing: "0.05em",
+                }}
               >
-                Klar for å skape
-                <br />
-                <span style={{ color: "var(--color-accent-dark)" }}>noe nytt sammen?</span>
-              </h2>
-              <p
-                className="text-base mb-10 max-w-lg mx-auto relative z-10"
-                style={{ color: "var(--color-secondary)" }}
+                <span>SEND E-POST</span>
+                <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-3 px-6 py-3 text-sm transition-all duration-200 hover:bg-[var(--color-background)] hover:text-[var(--color-foreground)]"
+                style={{
+                  color: "var(--color-background)",
+                  border: "1px solid var(--color-background)",
+                  fontFamily: "var(--font-mono)",
+                  letterSpacing: "0.05em",
+                }}
               >
-                Enten du er nysgjerrig på AI, trenger en skarpere Customer Success-strategi
-                eller ønsker å koble på noen som tenker nytt — ta gjerne kontakt.
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center relative z-10">
-                <a
-                  href="mailto:mariacabalan@outlook.com"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-85"
-                  style={{
-                    backgroundColor: "var(--color-foreground)",
-                    color: "var(--color-background)",
-                  }}
-                >
-                  Send meg en e-post
-                  <ArrowRight size={15} />
-                </a>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-80"
-                  style={{
-                    color: "var(--color-foreground)",
-                    border: "1.5px solid var(--color-foreground)",
-                  }}
-                >
-                  Se portefølje
-                </Link>
-              </div>
+                <span>SE PORTEFØLJE</span>
+              </Link>
             </div>
           </AnimatedSection>
         </div>
